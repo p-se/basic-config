@@ -178,3 +178,6 @@ nn <space> :
 ino jk <esc>
 EOF
 }
+
+git-aliases
+vimrc
