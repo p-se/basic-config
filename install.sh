@@ -157,7 +157,7 @@ EOF
 
 vimrc() {
     cat <<EOF >> ~/.vimrc
-set si au ts=4 sw=4 sts=4 expandtab hlsearch incsearch
+set si ai ts=4 sw=4 sts=4 expandtab hlsearch incsearch
 nn <space> :
 ino jk <esc>
 EOF
