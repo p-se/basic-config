@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-function git-aliases {
+git_aliases() {
     cat <<EOF >> ~/.bash_aliases >> ~/.zsh_aliases
 g=git
 ga='git add'
@@ -19,7 +19,6 @@ gb='git branch'
 gbD='git branch -D'
 gba='git branch -a'
 gbd='git branch -d'
-gbda='git branch --no-color --merged | command grep -vE "^(\+|\*|\s*($(git_main_branch)|development|develop|devel|dev)\s*$)" | command xargs -n 1 git branch -d'
 gbl='git blame -b -w'
 gbnm='git branch --no-merged'
 gbr='git branch --remote'
@@ -40,7 +39,6 @@ gcd='git checkout develop'
 gcf='git config --list'
 gcl='git clone --recurse-submodules'
 gclean='git clean -id'
-gcm='git checkout $(git_main_branch)'
 gcmsg='git commit -m'
 'gcn!'='git commit -v --no-edit --amend'
 gco='git checkout'
@@ -52,7 +50,6 @@ gcs='git commit -S'
 gcsm='git commit -s -m'
 gd='git diff'
 gdca='git diff --cached'
-gdct='git describe --tags $(git rev-list --tags --max-count=1)'
 gdcw='git diff --cached --word-diff'
 gdl='git diff HEAD^ HEAD'
 gds='git diff --staged'
@@ -68,15 +65,10 @@ gfu='git fetch upstream'
 gfum='git fetch upstream master'
 gg='git gui citool'
 gga='git gui citool --amend'
-ggpull='git pull origin "$(git_current_branch)"'
-ggpush='git push origin "$(git_current_branch)"'
-ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
 ghh='git help'
 gignore='git update-index --assume-unchanged'
 gignored='git ls-files -v | grep "^[[:lower:]]"'
-git-svn-dcommit-push='git svn dcommit && git push github $(git_main_branch):svntrunk'
 gk='\gitk --all --branches'
-gke='\gitk --all $(git log -g --pretty=%h)'
 gl='git pull'
 glg='git log --stat'
 glgg='git log --graph'
@@ -92,20 +84,16 @@ glol='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(
 glola='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
 glols='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --stat'
 glp=_git_log_prettily
-glum='git pull upstream $(git_main_branch)'
 gm='git merge'
 gma='git merge --abort'
-gmom='git merge origin/$(git_main_branch)'
 gmt='git mergetool --no-prompt'
 gmtvim='git mergetool --no-prompt --tool=vimdiff'
-gmum='git merge upstream/$(git_main_branch)'
 gp='git push'
 gpd='git push --dry-run'
 gpf='git push --force-with-lease'
 'gpf!'='git push --force'
 gpoat='git push origin --all && git push origin --tags'
 gpristine='git reset --hard && git clean -dffx'
-gpsup='git push --set-upstream origin $(git_current_branch)'
 gpu='git push upstream'
 gpv='git push -v'
 gr='git remote'
@@ -116,7 +104,6 @@ grba='git rebase --abort'
 grbc='git rebase --continue'
 grbd='git rebase develop'
 grbi='git rebase -i'
-grbm='git rebase $(git_main_branch)'
 grbom='git rebase origin/master'
 grbs='git rebase --skip'
 grbum='git rebase upstream/master'
@@ -127,13 +114,11 @@ grhh='git reset --hard'
 grm='git rm'
 grmc='git rm --cached'
 grmv='git remote rename'
-groh='git reset origin/$(git_current_branch) --hard'
 grrm='git remote remove'
 grs='git restore'
 grset='git remote set-url'
 grss='git restore --source'
 grst='git restore --staged'
-grt='cd "$(git rev-parse --show-toplevel || echo .)"'
 gru='git reset --'
 grup='git remote update'
 grv='git remote -v'
@@ -167,11 +152,10 @@ gupa='git pull --rebase --autostash'
 gupav='git pull --rebase --autostash -v'
 gupv='git pull --rebase -v'
 gwch='git whatchanged -p --abbrev-commit --pretty=medium'
-gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
 EOF
 }
 
-function vimrc {
+vimrc() {
     cat <<EOF >> ~/.vimrc
 set si au ts=4 sw=4 sts=4 expandtab hlsearch incsearch
 nn <space> :
@@ -179,5 +163,5 @@ ino jk <esc>
 EOF
 }
 
-git-aliases
+git_aliases
 vimrc
