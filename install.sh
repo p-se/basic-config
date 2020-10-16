@@ -155,6 +155,14 @@ gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 EOF
 }
 
+shell_aliases() {
+    cat <<EOF >> ~/.bash_aliases >> ~/.zsh_aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+EOF
+}
+
 vimrc() {
     cat <<EOF >> ~/.vimrc
 set si ai ts=4 sw=4 sts=4 expandtab hlsearch incsearch
