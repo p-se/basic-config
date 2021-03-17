@@ -1,0 +1,4 @@
+alias o='grep'
+alias oi='grep -i'
+alias oe='grep -E'
+alias ov='grep -v'

@@ -1,0 +1,8 @@
+alias zse='zypper se'
+alias zup='zypper up'
+alias zin='zypper in'
+alias zinn='zypper -n in'
+alias zrm='zypper rm'
+alias zdup='zypper dup'
+alias zlr='zypper lr'
+alias zlru='zypper lr -u'
